@@ -1,4 +1,4 @@
 import React from 'react';
 import { Props } from './component-types';
-declare function ReactEditorJS({ factory, holder, defaultValue, children, value, onInitialize, ...restProps }: Props): React.ReactElement;
+declare function ReactEditorJS({ factory, holder, defaultValue, children, value, onInitialize, ...restProps }: Props): React.ReactNode;
 export default ReactEditorJS;

@@ -1,3 +1,4 @@
+import React from 'react';
 import { WrapperProps as Props } from '../core';
-declare function ReactEditorJSClient(props: Props): import("react/jsx-runtime").JSX.Element;
+declare function ReactEditorJSClient(props: Props): React.ReactNode;
 export default ReactEditorJSClient;
