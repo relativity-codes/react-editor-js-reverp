@@ -4,7 +4,8 @@ import useClientEditorCore from '.'
 
 
 function ReactEditorJSClient(props: Props) {
-  return <ReactEditorJS factory={useClientEditorCore} {...props} />
+  const { ...rest } = useClientEditorCore(props);
+  return <ReactEditorJS factory={() => rest} {...props} />
 }
 
 export default ReactEditorJSClient

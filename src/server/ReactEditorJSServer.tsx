@@ -4,7 +4,8 @@ import useServerEditorCore from '.'
 
 
 function ReactEditorJSServer(props: Props) {
-  return <ReactEditorJS factory={useServerEditorCore} {...props} />
+  const { ...rest } = useServerEditorCore(props);
+  return <ReactEditorJS factory={() => rest} {...props} />
 }
 
 export default ReactEditorJSServer
