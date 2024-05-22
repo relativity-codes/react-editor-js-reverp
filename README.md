@@ -32,7 +32,7 @@ npm install --save react-editor-js-reverp @editorjs/editorjs @editorjs/paragraph
 ```
 
 ```tsx
-import { createReactEditorJS } from 'react-editor-js-reverp'
+import { CreateReactEditorJS } from 'react-editor-js-reverp'
 
 <CreateReactEditorJS defaultValue={blocks} />
 ```
@@ -60,7 +60,7 @@ npm install --save-dev @editorjs/checklist
 ```
 
 ```tsx
-import { createReactEditorJS } from 'react-editor-js-reverp'
+import { CreateReactEditorJS } from 'react-editor-js-reverp'
 import CheckList from '@editorjs/checklist'
 
 <CreateReactEditorJS defaultValue={blocks} tools={{ checkList: CheckList }} />
@@ -108,7 +108,7 @@ export const EDITOR_JS_TOOLS = {
 ```
 
 ```tsx
-import { createReactEditorJS } from 'react-editor-js-reverp'
+import { CreateReactEditorJS } from 'react-editor-js-reverp'
 import { EDITOR_JS_TOOLS } from './tools'
 
 
