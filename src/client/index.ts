@@ -67,6 +67,7 @@ const useClientEditorCore = (config: EditorConfig ): EditorCore => {
     save,
     destroy,
     render,
+    ...config
   };
 };
 

@@ -10,7 +10,7 @@ function ReactEditorJS({
   value,
   onInitialize,
   ...restProps
-}: Props): React.ReactElement {
+}: Props): React.ReactNode {
   const memoizedHolder = React.useRef(
     holder ?? `react-editor-js-${Date.now().toString(16)}`
   )

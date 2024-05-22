@@ -1,6 +1,6 @@
-import { OutputData } from '@editorjs/editorjs'
+import { EditorConfig, OutputData } from '@editorjs/editorjs'
 
-export interface EditorCore {
+export interface EditorCore extends EditorConfig {
   destroy(): Promise<void>;
 
   clear(): Promise<void>;
