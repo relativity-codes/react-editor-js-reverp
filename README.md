@@ -34,9 +34,7 @@ npm install --save react-editor-js-reverp @editorjs/editorjs @editorjs/paragraph
 ```tsx
 import { createReactEditorJS } from 'react-editor-js-reverp'
 
-const ReactEditorJS = createReactEditorJS()
-
-<ReactEditorJS defaultValue={blocks} />
+<CreateReactEditorJS defaultValue={blocks} />
 ```
 
 ## 📙 API
@@ -65,9 +63,7 @@ npm install --save-dev @editorjs/checklist
 import { createReactEditorJS } from 'react-editor-js-reverp'
 import CheckList from '@editorjs/checklist'
 
-const ReactEditorJS = createReactEditorJS()
-
-<ReactEditorJS defaultValue={blocks} tools={{ checkList: CheckList }} />
+<CreateReactEditorJS defaultValue={blocks} tools={{ checkList: CheckList }} />
 ```
 
 We recommend to create a `tools.js` file and export your tools as a constant. Here is an example using all of the default plugins:
@@ -115,9 +111,8 @@ export const EDITOR_JS_TOOLS = {
 import { createReactEditorJS } from 'react-editor-js-reverp'
 import { EDITOR_JS_TOOLS } from './tools'
 
-const ReactEditorJS = createReactEditorJS()
 
-<ReactEditorJS defaultValue={blocks} tools={EDITOR_JS_TOOLS} />
+<CreateReactEditorJS defaultValue={blocks} tools={EDITOR_JS_TOOLS} />
 ```
 
 You can read more about plugins/tools at [editor-js: Tools installation](https://editorjs.io/getting-started#tools-installation)
@@ -127,9 +122,9 @@ You can read more about plugins/tools at [editor-js: Tools installation](https:/
 It's simpleeeee
 
 ```tsx
-<ReactEditorJS holder="custom">
+<CreateReactEditorJS holder="custom">
   <div id="custom" />
-</ReactEditorJS>
+</CreateReactEditorJS>
 ```
 
 ### How to access editor-js instance?
@@ -160,7 +155,7 @@ const handleSave = React.useCallback(async () => {
   const savedData = await editorCore.current.save();
 }, [])
 
-<ReactEditorJS onInitialize={handleInitialize} defaultValue={blocks} />
+<CreateReactEditorJS onInitialize={handleInitialize} defaultValue={blocks} />
 ```
 
 If you want to access low-level instance, you can use `dangerouslyLowLevelInstance`
@@ -183,7 +178,7 @@ const handleSave = React.useCallback(async () => {
   const savedData = await editorCore.current.dangerouslyLowLevelInstance?.save();
 }, [])
 
-<ReactEditorJS onInitialize={handleInitialize} defaultValue={blocks} />
+<CreateReactEditorJS onInitialize={handleInitialize} defaultValue={blocks} />
 ```
 
 ### Haven't received data from server (when use Link)
@@ -193,7 +188,7 @@ You should set linkTool [config](https://github.com/editor-js/link#usage). 💪�
 ```tsx
 import LinkTool from '@editorjs/link'
 
-<ReactEditorJS
+<CreateReactEditorJS
   defaultValue={blocks}
   tools={{
     linkTool: {

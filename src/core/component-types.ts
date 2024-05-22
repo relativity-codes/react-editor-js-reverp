@@ -5,12 +5,13 @@ import { EditorCoreFactory } from './factory'
 import { EditorCore } from './editor-core'
 
 export interface Props extends Omit<EditorConfig, 'data'> {
-  factory: EditorCoreFactory
-  holder: string
-  children?: React.ReactElement
-  value?: EditorConfig['data']
-  defaultValue?: EditorConfig['data']
-  onInitialize?: (core: EditorCore) => void
+  factory: EditorCoreFactory;
+  holder?: string;
+  children?: React.ReactElement;
+  value?: EditorConfig['data'];
+  defaultValue?: EditorConfig['data'];
+  onInitialize?: (core: EditorCore) => void;
+  [key: string]: any;
 }
 
 export type WrapperProps = Omit<Props, 'factory'>

@@ -1,13 +1,13 @@
 import { OutputData } from '@editorjs/editorjs'
 
 export interface EditorCore {
-  destroy(): Promise<void>
+  destroy(): Promise<void>;
 
-  clear(): Promise<void>
+  clear(): Promise<void>;
 
-  save(): Promise<OutputData | undefined>
+  save(): Promise<OutputData | undefined>;
 
-  render(data: OutputData): Promise<void>
+  render(data: OutputData): Promise<void>;
 
-  get dangerouslyLowLevelInstance(): any | null
+  get dangerouslyLowLevelInstance(): any | null;
 }
