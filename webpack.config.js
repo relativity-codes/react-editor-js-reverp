@@ -24,6 +24,11 @@ module.exports = {
         exclude: /node_modules/,
         include: path.resolve(__dirname, 'src'), // Include only files in src directory
       },
+      {
+        test: /\.ts$/,
+        use: 'ts-loader', // or 'awesome-typescript-loader' if you prefer
+        exclude: /node_modules/
+      }
     ],
   },
   externals: {
