@@ -1,8 +1,5 @@
-### Same tool as ```react-editor-js``` but refactored to functional component style
 
 ## 🍞 DEMO
-
-- [CodeSandbox](https://codesandbox.io/s/react-editor-js-v2-34bfl)
 
 ## 🍀 Supported Official Plugin
 
@@ -32,9 +29,9 @@ npm install --save react-editor-js-reverp @editorjs/editorjs @editorjs/paragraph
 ```
 
 ```tsx
-import { CreateReactEditorJS } from 'react-editor-js-reverp'
+import { Editor } from 'react-editor-js-reverp'
 
-<CreateReactEditorJS defaultValue={blocks} />
+<Editor value={blocks} />
 ```
 
 ## 📙 API
@@ -43,7 +40,7 @@ Allow all options of [editor-js](https://github.com/codex-team/editor.js/blob/ma
 
 | Name               | Type                                                                            | Description                                                                                                                                           |
 | ------------------ | ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| defaultValue | OutputData                                                                         | Initial data when using editor js as [uncontrolled component](https://ko.reactjs.org/docs/uncontrolled-components.html). highly recommend it                                                                                                         |
+| value | OutputData                                                                         | Initial data when using editor js as [uncontrolled component](https://ko.reactjs.org/docs/uncontrolled-components.html). highly recommend it                                                                                                         |
 | value | OutputData                                                                         | data when using editor js as [controlled component](https://ko.reactjs.org/docs/forms.html#controlled-components). <br> ⚠️ Don't use it with onChange prop. Infinite loops can occur.                                                                                                         |
 | onInitialize            | (editorCore?: EditorCore) => void                                                   | Call after editor-js is initialized                                                                                       |
 
@@ -60,10 +57,10 @@ npm install --save-dev @editorjs/checklist
 ```
 
 ```tsx
-import { CreateReactEditorJS } from 'react-editor-js-reverp'
+import { Editor } from 'react-editor-js-reverp'
 import CheckList from '@editorjs/checklist'
 
-<CreateReactEditorJS defaultValue={blocks} tools={{ checkList: CheckList }} />
+<Editor value={blocks} tools={{ checkList: CheckList }} />
 ```
 
 We recommend to create a `tools.js` file and export your tools as a constant. Here is an example using all of the default plugins:
@@ -110,29 +107,16 @@ export const EDITOR_JS_TOOLS = {
 You can read more about plugins/tools at [editor-js: Tools installation](https://editorjs.io/getting-started#tools-installation)
 
 ```tsx
-import { CreateReactEditorJS } from 'react-editor-js-reverp'
+import { Editor } from 'react-editor-js-reverp'
 import { EDITOR_JS_TOOLS } from './tools'
 
 
-<CreateReactEditorJS className={} style={{}} defaultValue={blocks} tools={EDITOR_JS_TOOLS} onChange={} />
+<Editor className={} style={{}} value={blocks} tools={EDITOR_JS_TOOLS} onChange={} />
 ```
 
 ### How to access editor-js instance?
 
 The editor-js instance is inaccessible. However, you can access the abstracted editor-js for isomorphic react-editor-js.
-
-```ts
-// abstracted editor-js interface
-interface EditorCore {
-  destroy(): Promise<void>
-
-  clear(): Promise<void>
-
-  save(): Promise<OutputData>
-
-  render(data: OutputData): Promise<void>
-}
-```
 
 ```tsx
 const editorCore = React.useRef(null)
@@ -145,7 +129,7 @@ const handleSave = React.useCallback(async () => {
   const savedData = await editorCore.current.save();
 }, [])
 
-<CreateReactEditorJS onInitialize={handleInitialize} defaultValue={blocks} />
+<Editor onInitialize={handleInitialize} value={blocks} />
 ```
 
 If you want to access low-level instance, you can use `dangerouslyLowLevelInstance`
@@ -165,10 +149,10 @@ const handleInitialize = React.useCallback((instance) => {
 }, [])
 
 const handleSave = React.useCallback(async () => {
-  const savedData = await editorCore.current.dangerouslyLowLevelInstance?.save();
+  const savedData = await editorCore.current.save();
 }, [])
 
-<CreateReactEditorJS onInitialize={handleInitialize} defaultValue={blocks} />
+<Editor onInitialize={handleInitialize} value={blocks} />
 ```
 
 ### Haven't received data from server (when use Link)
@@ -178,8 +162,8 @@ You should set linkTool [config](https://github.com/editor-js/link#usage). 💪�
 ```tsx
 import LinkTool from '@editorjs/link'
 
-<CreateReactEditorJS
-  defaultValue={blocks}
+<Editor
+  value={blocks}
   tools={{
     linkTool: {
       class: LinkTool,
