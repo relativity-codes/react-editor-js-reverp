@@ -6,23 +6,15 @@ function ReactEditorJS({
   factory,
   holder,
   defaultValue,
-  children,
   value,
   onInitialize,
   ...restProps
 }: Props): React.ReactNode {
-  const memoizedHolder = React.useRef(
-    holder ?? `react-editor-js-${Date.now().toString(16)}`
-  )
 
   const editorJS = React.useRef<EditorCore | null>(null)
 
   React.useEffect(() => {
-    editorJS.current = factory({
-      holder: memoizedHolder.current,
-      ...(defaultValue && { data: defaultValue }),
-      ...restProps,
-    })
+    editorJS.current = factory();
 
     onInitialize?.(editorJS.current)
 
@@ -37,7 +29,7 @@ function ReactEditorJS({
     }
   }, [value])
 
-  return children || <div id={memoizedHolder.current} />
+  return <div className={restProps.className} style={restProps.style} id="editorjs"></div>
 }
 
 export default ReactEditorJS
