@@ -107,24 +107,14 @@ export const EDITOR_JS_TOOLS = {
 }
 ```
 
+You can read more about plugins/tools at [editor-js: Tools installation](https://editorjs.io/getting-started#tools-installation)
+
 ```tsx
 import { CreateReactEditorJS } from 'react-editor-js-reverp'
 import { EDITOR_JS_TOOLS } from './tools'
 
 
-<CreateReactEditorJS defaultValue={blocks} tools={EDITOR_JS_TOOLS} />
-```
-
-You can read more about plugins/tools at [editor-js: Tools installation](https://editorjs.io/getting-started#tools-installation)
-
-### How do I use custom element?
-
-It's simpleeeee
-
-```tsx
-<CreateReactEditorJS holder="custom">
-  <div id="custom" />
-</CreateReactEditorJS>
+<CreateReactEditorJS className={} style={{}} defaultValue={blocks} tools={EDITOR_JS_TOOLS} onChange={} />
 ```
 
 ### How to access editor-js instance?
@@ -194,7 +184,7 @@ import LinkTool from '@editorjs/link'
     linkTool: {
       class: LinkTool,
       config: {
-        endpoint: 'http://localhost:8008/fetchUrl', // Your backend endpoint for url data fetching
+        endpoint: 'http://localhost:8008/fetchUrl',
       }
     }
   }}
